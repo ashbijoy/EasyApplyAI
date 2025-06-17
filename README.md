@@ -1,0 +1,1 @@
+# an AI-based resume and cover letter generator using OpenAI API, dynamically tailoring content to job descriptions via a web interface.
