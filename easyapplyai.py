@@ -1,11 +1,12 @@
 import streamlit as st
-import openai
+from openai import OpenAI
 import fitz 
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
-openai.api_key = os.getenv("OPENAI_API_KEY")
+print("Loaded API key:", os.getenv("OPENAI_API_KEY"))
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 st.set_page_config(page_title="EasyApplyAi", layout="centered")
 
@@ -46,12 +47,12 @@ Here is the job description:
 Extract and list only the most relevant skills and achievements from the resume that match the job description.
 Format them as short bullet points.
 """
-            highlights_response = openai.ChatCompletion.create(
+            highlights_response = client.chat.completions.create(
                 model="gpt-3.5-turbo",
                 messages=[{"role": "user", "content": highlights_prompt}],
                 temperature=0.6
             )
-            resume_highlights = highlights_response['choices'][0]['message']['content'].strip()
+            resume_highlights = highlights_response.choices[0].message.content.strip()
 
             cover_prompt = f"""
 You are a professional cover letter writer.
@@ -64,12 +65,12 @@ Here is the job description:
 
 Write a tailored cover letter in 250–300 words using a confident, professional tone.
 """
-            cover_response = openai.ChatCompletion.create(
+            cover_response = client.chat.completions.create(
                 model="gpt-3.5-turbo",
                 messages=[{"role": "user", "content": cover_prompt}],
                 temperature=0.7
             )
-            cover_letter = cover_response['choices'][0]['message']['content'].strip()
+            cover_letter = cover_response.choices[0].message.content.strip()
 
             st.subheader("Tailored Resume Highlights")
             st.markdown(resume_highlights)
