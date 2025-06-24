@@ -4,7 +4,7 @@ import fitz
 from dotenv import load_dotenv
 import os
 
-load_dotenv()  # Looks for .env by default
+load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 st.set_page_config(page_title="EasyApplyAi", layout="centered")
