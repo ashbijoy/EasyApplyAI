@@ -1,8 +1,12 @@
 import streamlit as st
 import openai
 import fitz 
+from dotenv import load_dotenv
+import os
 
-openai.api_key = "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"
+load_dotenv()  # Looks for .env by default
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
 st.set_page_config(page_title="EasyApplyAi", layout="centered")
 
 st.title("EasyApplyAi")
