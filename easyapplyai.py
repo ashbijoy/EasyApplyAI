@@ -4,7 +4,7 @@ import fitz
 from dotenv import load_dotenv
 import os
 
-#I have stored my API in env file mfs
+#I just a noob guys. 
 load_dotenv()
 print("Loaded API key:", os.getenv("OPENAI_API_KEY"))
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
