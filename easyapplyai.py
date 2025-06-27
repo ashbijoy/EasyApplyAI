@@ -80,3 +80,4 @@ Write a tailored cover letter in 250–300 words using a confident, professional
             st.markdown(cover_letter)
     else:
         st.warning("Please upload your resume and paste the job description.")
+#ok 
